@@ -14,12 +14,18 @@ class Article extends React.Component {
           <div className="article-meta-details">
             <small>Created By: {this.props.author} &nbsp;
                     <Timestamp time={this.props.created_at} precision={4} /> &nbsp; &nbsp;
-                  Last Updated: {this.props.updated_at} ago</small>
+                  Last Updated: <Timestamp time={this.props.updated_at} precision={4} /></small>
           </div>
         </div>
       </React.Fragment>
     );
   }
+
+  componentDidMount() {
+    var self = this;
+    setInterval(function() { self.forceUpdate() }, 1000);
+  }
+
 }
 
 Article.propTypes = {
